@@ -21,6 +21,9 @@ import br.com.devmedia.jm.calculadoraweb.web.CalculadoraServlet.Operacao;
 @Category(SlowTests.class)
 public class CalculadoraWebFuncTest {
 
+    private static CalculadoraWebTomcatRunner app;
+
+    private static WebDriver driver;
 
     private static final String MSG_NUM1_REQUERIDO = "Campo: Número 1 - Número requerido!";
     private static final String MSG_NUM2_REQUERIDO = "Campo: Número 2 - Número requerido!";
@@ -88,7 +91,56 @@ public class CalculadoraWebFuncTest {
         opercaoErros("a", "b", Operacao.DIVIDIR, MSG_NUM1_INVALIDO, MSG_NUM2_INVALIDO);
     }
     
+    private void opercaoSucesso(String numero1, String numero2, Operacao opercao, String resultado) {
+        acessar();
+        digitarNumero1(numero1);
+        digitarNumero2(numero2);
+        selecionarOperacao(opercao);
+        calcular();
+        verificarResultado(resultado);
+    }
     
+    private void opercaoErros(String numero1, String numero2, Operacao opercao, String... erros) {
+        acessar();
+        digitarNumero1(numero1);
+        digitarNumero2(numero2);
+        selecionarOperacao(opercao);
+        calcular();
+        verificarErros(erros);
+    }
+
+    private void acessar() {
+        driver.get(app.getUrlAplicacao());
+    }
+
+    private void digitarNumero1(String numero) {
+        driver.findElement(By.id("num1")).sendKeys(numero);
+    }
+
+    private void digitarNumero2(String numero) {
+        driver.findElement(By.id("num2")).sendKeys(numero);
+    }
+
+    private void selecionarOperacao(Operacao operacao) {
+        Select select = new Select(driver.findElement(By.id("operacao")));
+        select.selectByValue(operacao.name());
+    }
+
+    private void calcular() {
+        driver.findElement(By.id("btnCalcular")).click();
+    }
+
+    private void verificarResultado(String resultado) {
+        Assert.assertEquals(resultado, driver.findElement(By.id("resultado"))
+                .getText());
+    }
+
+    private void verificarErros(String... erros) {
+        WebElement divErros = driver.findElement(By.id("divErros"));
+        for (String erro : erros) {
+            Assert.assertTrue(divErros.getText().contains(erro));
+        }
+    }
 
     
 }
