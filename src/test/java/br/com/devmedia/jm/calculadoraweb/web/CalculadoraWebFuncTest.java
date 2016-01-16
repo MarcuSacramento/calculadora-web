@@ -21,9 +21,6 @@ import br.com.devmedia.jm.calculadoraweb.web.CalculadoraServlet.Operacao;
 @Category(SlowTests.class)
 public class CalculadoraWebFuncTest {
 
-    private static CalculadoraWebTomcatRunner app;
-
-    private static WebDriver driver;
 
     private static final String MSG_NUM1_REQUERIDO = "Campo: Número 1 - Número requerido!";
     private static final String MSG_NUM2_REQUERIDO = "Campo: Número 2 - Número requerido!";
