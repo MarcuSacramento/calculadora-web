@@ -88,23 +88,7 @@ public class CalculadoraWebFuncTest {
         opercaoErros("a", "b", Operacao.DIVIDIR, MSG_NUM1_INVALIDO, MSG_NUM2_INVALIDO);
     }
     
-    private void opercaoSucesso(String numero1, String numero2, Operacao opercao, String resultado) {
-        acessar();
-        digitarNumero1(numero1);
-        digitarNumero2(numero2);
-        selecionarOperacao(opercao);
-        calcular();
-        verificarResultado(resultado);
-    }
     
-    private void opercaoErros(String numero1, String numero2, Operacao opercao, String... erros) {
-        acessar();
-        digitarNumero1(numero1);
-        digitarNumero2(numero2);
-        selecionarOperacao(opercao);
-        calcular();
-        verificarErros(erros);
-    }
 
     
 }
