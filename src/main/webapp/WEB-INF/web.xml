@@ -5,7 +5,5 @@
 
 	<display-name>Calculadora Web</display-name>
 		
-	<welcome-file-list>
-	   <welcome-file>calcular</welcome-file>
-	</welcome-file-list>
+	
 </web-app>
