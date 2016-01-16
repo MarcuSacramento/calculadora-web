@@ -21,7 +21,7 @@ import br.com.devmedia.jm.calculadoraweb.web.CalculadoraServlet.Operacao;
 @Category(SlowTests.class)
 public class CalculadoraWebFuncTest {
 
-    private static CalculadoraWebTomcatRunner app;
+    
 
     private static WebDriver driver;
 
@@ -92,7 +92,7 @@ public class CalculadoraWebFuncTest {
     }
     
     private void opercaoSucesso(String numero1, String numero2, Operacao opercao, String resultado) {
-        acessar();
+   
         digitarNumero1(numero1);
         digitarNumero2(numero2);
         selecionarOperacao(opercao);
@@ -101,7 +101,7 @@ public class CalculadoraWebFuncTest {
     }
     
     private void opercaoErros(String numero1, String numero2, Operacao opercao, String... erros) {
-        acessar();
+   
         digitarNumero1(numero1);
         digitarNumero2(numero2);
         selecionarOperacao(opercao);
@@ -109,10 +109,7 @@ public class CalculadoraWebFuncTest {
         verificarErros(erros);
     }
 
-    private void acessar() {
-        driver.get(app.getUrlAplicacao());
-    }
-
+   
     private void digitarNumero1(String numero) {
         driver.findElement(By.id("num1")).sendKeys(numero);
     }
