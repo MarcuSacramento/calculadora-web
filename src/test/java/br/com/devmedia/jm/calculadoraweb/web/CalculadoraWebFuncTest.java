@@ -106,38 +106,5 @@ public class CalculadoraWebFuncTest {
         verificarErros(erros);
     }
 
-    private void acessar() {
-        driver.get(app.getUrlAplicacao());
-    }
-
-    private void digitarNumero1(String numero) {
-        driver.findElement(By.id("num1")).sendKeys(numero);
-    }
-
-    private void digitarNumero2(String numero) {
-        driver.findElement(By.id("num2")).sendKeys(numero);
-    }
-
-    private void selecionarOperacao(Operacao operacao) {
-        Select select = new Select(driver.findElement(By.id("operacao")));
-        select.selectByValue(operacao.name());
-    }
-
-    private void calcular() {
-        driver.findElement(By.id("btnCalcular")).click();
-    }
-
-    private void verificarResultado(String resultado) {
-        Assert.assertEquals(resultado, driver.findElement(By.id("resultado"))
-                .getText());
-    }
-
-    private void verificarErros(String... erros) {
-        WebElement divErros = driver.findElement(By.id("divErros"));
-        for (String erro : erros) {
-            Assert.assertTrue(divErros.getText().contains(erro));
-        }
-    }
-
     
 }
