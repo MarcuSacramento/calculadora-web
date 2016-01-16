@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import br.com.devmedia.jm.calculadoraweb.SlowTests;
 import br.com.devmedia.jm.calculadoraweb.web.CalculadoraServlet.Operacao;
-import br.com.devmedia.jm.calculadoraweb.web.util.CalculadoraWebTomcatRunner;
+
 
 /**
  *  Testes funcionais Calculadora Web 
@@ -30,13 +30,6 @@ public class CalculadoraWebFuncTest {
     
     private static final String MSG_NUM1_INVALIDO = "Campo: Número 1 - Número inválido!";
     private static final String MSG_NUM2_INVALIDO = "Campo: Número 2 - Número inválido!";
-
-    @BeforeClass
-    public static void before() {
-        app = new CalculadoraWebTomcatRunner(8090);
-        app.run();
-        driver = new FirefoxDriver();
-    }
 
     @Test
     public void testAdicionar() {
@@ -149,10 +142,5 @@ public class CalculadoraWebFuncTest {
         }
     }
 
-    @AfterClass
-    public static void after() {
-        driver.close();
-        app.stop();
-    }
-
+    
 }
